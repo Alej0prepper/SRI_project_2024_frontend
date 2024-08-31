@@ -9,13 +9,11 @@ import UserSection from "./components/UserSection";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
-  const [recommendations, setRecommendations] = useState([]);
+  const [recommendations, setRecommendations] = useState<any[]>(null!);
   const [visibleMovies, setVisibleMovies] = useState(15);
-  const [isClient, setIsClient] = useState(false)
-  const [userId, setUserId] = useState("")
+  const [userId, setUserId] = useState(window.localStorage.getItem("userId"))
   
   useEffect(()=>{
-    setIsClient(true)
     setUserId(window.localStorage.getItem("userId") || '')
   },[])
   
@@ -51,9 +49,14 @@ export default function Home() {
 
   useEffect(() => {
     fetchRecommendations();
-    fetchMovies();
-    console.log(userId)
   }, []);
+
+  useEffect(()=>{
+    if(recommendations !== null)
+    {
+      fetchMovies();
+    }
+  },[recommendations])
 
   return (
     <main className="items-center justify-between md:p-24 lg:p-24 xl:p-24 md:pl-40 lg:pl-40 xl:pl-40">
@@ -62,9 +65,10 @@ export default function Home() {
         <div className="">
           <h1 className="text-red-600 font-bold text-3xl">We recommend:</h1>
           {
+            recommendations &&
             recommendations.length > 0 ?
               <div className="flex flex-wrap justify-start">
-                {recommendations?.slice(0, visibleMovies).map((movie:any, key) => (
+                {recommendations?.slice(0, visibleMovies).map((movie:any, key:any) => (
                   <MovieCard movie={movie} userId={userId+""} key={key} />
                 ))}
               </div>
