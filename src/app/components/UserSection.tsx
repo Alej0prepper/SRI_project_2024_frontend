@@ -37,9 +37,6 @@ export default function UserSection({setUserId}:{setUserId:any})
         if(isClient)
         {
             if (login) {
-                window.localStorage.setItem("userName", "")
-                window.localStorage.setItem("userId", "")
-                
                 const userId = (document.getElementById("userIdLogin") as HTMLInputElement).value
                 // Fetch the user by userId (or any other identifier)
                 try {
@@ -133,19 +130,52 @@ export default function UserSection({setUserId}:{setUserId:any})
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="gender">
                                     Gender
                                 </label>
-                                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="gender" type="text" name="gender"/>
+                                <select className="bg-white text-black" name="gender" id="">
+                                    <option value="F">Female</option>
+                                    <option value="M">Male</option>
+                                </select>
                             </div>
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="age">
                                     Age
                                 </label>
-                                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="age" type="text" name="age"/>
+                                <select className="bg-white text-black" name="age" id="">
+                                    <option value="1">Under 18</option>
+                                    <option value="18">18-24</option>
+                                    <option value="25">25-34</option>
+                                    <option value="35">35-44</option>
+                                    <option value="45">45-49</option>
+                                    <option value="50">50-55</option>
+                                    <option value="56">56+</option>
+                                </select>
                             </div>
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="ocupation">
                                     Ocupation
                                 </label>
-                                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="ocupation" type="text" name="occupation"/>
+                                <select name="occupation" id="occupation" className="bg-white text-black">
+                                    <option value="0">Other or not specified</option>
+                                    <option value="1">Academic/Educator</option>
+                                    <option value="2">Artist</option>
+                                    <option value="3">Clerical/Admin</option>
+                                    <option value="4">College/Grad Student</option>
+                                    <option value="5">Customer Service</option>
+                                    <option value="6">Doctor/Health Care</option>
+                                    <option value="7">Executive/Managerial</option>
+                                    <option value="8">Farmer</option>
+                                    <option value="9">Homemaker</option>
+                                    <option value="10">K-12 Student</option>
+                                    <option value="11">Lawyer</option>
+                                    <option value="12">Programmer</option>
+                                    <option value="13">Retired</option>
+                                    <option value="14">Sales/Marketing</option>
+                                    <option value="15">Scientist</option>
+                                    <option value="16">Self-Employed</option>
+                                    <option value="17">Technician/Engineer</option>
+                                    <option value="18">Tradesman/Craftsman</option>
+                                    <option value="19">Unemployed</option>
+                                    <option value="20">Writer</option>
+                                </select>
                             </div>
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="zip_code">

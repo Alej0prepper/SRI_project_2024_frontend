@@ -12,11 +12,13 @@ export default function Home() {
   const [recommendations, setRecommendations] = useState([]);
   const [visibleMovies, setVisibleMovies] = useState(15);
   const [isClient, setIsClient] = useState(false)
+  const [userId, setUserId] = useState("")
+  
   useEffect(()=>{
     setIsClient(true)
+    setUserId(window.localStorage.getItem("userId") || '')
   },[])
-  const [userId, setUserId] = useState(isClient ? window.localStorage.getItem("userId") : 0)
-
+  
   const fetchMovies = async () => {
     try {
       const response = await fetch("http://127.0.0.1:5000/movies");
@@ -50,6 +52,7 @@ export default function Home() {
   useEffect(() => {
     fetchRecommendations();
     fetchMovies();
+    console.log(userId)
   }, []);
 
   return (
