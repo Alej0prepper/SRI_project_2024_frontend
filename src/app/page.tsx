@@ -11,10 +11,13 @@ export default function Home() {
   const [movies, setMovies] = useState([]);
   const [recommendations, setRecommendations] = useState<any[]>(null!);
   const [visibleMovies, setVisibleMovies] = useState(15);
-  const [userId, setUserId] = useState(window.localStorage.getItem("userId"))
+  const [isClient, setIsClient] = useState(false)
+  const [userId, setUserId] = useState(isClient ? window.localStorage.getItem("userId") : "")
   
+
+
   useEffect(()=>{
-    setUserId(window.localStorage.getItem("userId") || '')
+    setIsClient(true)
   },[])
   
   const fetchMovies = async () => {
@@ -74,7 +77,7 @@ export default function Home() {
               </div>
               :
               <div className="mx-auto mt-12 w-10">
-                <CircularProgress />
+                There are no recommendations yet...
               </div>
           }
         </div>
