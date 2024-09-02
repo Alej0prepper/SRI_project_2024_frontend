@@ -11,13 +11,11 @@ export default function Home() {
   const [movies, setMovies] = useState([]);
   const [recommendations, setRecommendations] = useState<any[]>(null!);
   const [visibleMovies, setVisibleMovies] = useState(15);
-  const [isClient, setIsClient] = useState(false)
   const [userId, setUserId] = useState("")
   
 
 
   useEffect(()=>{
-    setIsClient(true)
     setUserId(window.localStorage.getItem("userId")!)
   },[])
   
