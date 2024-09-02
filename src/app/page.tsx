@@ -12,12 +12,13 @@ export default function Home() {
   const [recommendations, setRecommendations] = useState<any[]>(null!);
   const [visibleMovies, setVisibleMovies] = useState(15);
   const [isClient, setIsClient] = useState(false)
-  const [userId, setUserId] = useState(isClient ? window.localStorage.getItem("userId") : "")
+  const [userId, setUserId] = useState("")
   
 
 
   useEffect(()=>{
     setIsClient(true)
+    setUserId(window.localStorage.getItem("userId")!)
   },[])
   
   const fetchMovies = async () => {
@@ -51,8 +52,11 @@ export default function Home() {
   };
 
   useEffect(() => {
-    fetchRecommendations();
-  }, []);
+    if(userId != "")
+    {
+      fetchRecommendations();
+    }
+  }, [userId]);
 
   useEffect(()=>{
     if(recommendations !== null)
@@ -76,7 +80,7 @@ export default function Home() {
                 ))}
               </div>
               :
-              <div className="mx-auto mt-12 w-10">
+              <div className="mt-12 w-full">
                 There are no recommendations yet...
               </div>
           }
