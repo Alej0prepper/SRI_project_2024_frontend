@@ -5,7 +5,7 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { CircularProgress } from "@mui/material";
 import UserSection from "./components/UserSection";
-
+import Image from 'next/image'
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
@@ -64,8 +64,16 @@ export default function Home() {
   },[recommendations])
 
   return (
-    <main className="items-center justify-between md:p-24 lg:p-24 xl:p-24 md:pl-40 lg:pl-40 xl:pl-40">
-      <ToastContainer />
+    <main className="items-center md:pt-0 lg:pt-0 xl:pt-0 justify-between md:p-24 lg:p-24 xl:p-24 md:pl-40 lg:pl-40 xl:pl-40">
+        <ToastContainer />
+        <div className="flex mb-32 items-center mx-auto w-1/2">
+          <div className="text-2xl items-center gap-0">
+              <div className="w-5/12 mx-auto">
+                <Image src="/logo.png" alt="logo" fill className="image"/>
+              </div>
+              <h1 className="text-red-600 mx-auto w-[90%]">Like Netflix, but with all the chill and none of the stream.</h1>
+          </div>
+        </div>
         <UserSection setUserId={setUserId} />
         <div className="">
           <h1 className="text-red-600 font-bold text-3xl">We recommend:</h1>
@@ -109,3 +117,4 @@ export default function Home() {
     </main>
   );
 }
+

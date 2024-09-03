@@ -88,8 +88,8 @@ export default function UserSection({setUserId}:{setUserId:any})
 
     return(
         <div className="">
-            <div className="text-white flex justify-end cursor-pointer mr-20 items-end mb-32" onClick={()=>setShowModal(true)}>
-                <IconUser size="5%"/>
+            <div className="text-white w-2/12 ml-auto flex justify-end cursor-pointer mr-20 items-end mb-32" onClick={()=>setShowModal(true)}>
+                <IconUser size="30%"/>
                 {isClient && window.localStorage.getItem("userName") ?  "Hola "+window.localStorage.getItem("userName") : ""}
                 <br />
                 {isClient && window.localStorage.getItem("userId") ?  "ID "+window.localStorage.getItem("userId") : ""}
@@ -99,7 +99,7 @@ export default function UserSection({setUserId}:{setUserId:any})
                     login ?
                     <div className=" w-1/2 ml-[37%] max-w-xs">
                         <div onClick={()=>setShowModal(false)} className="bg-[#d7d7d7c0] w-full h-full fixed top-0 left-0 z-20"></div>
-                        <form className="fixed bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 z-40">
+                        <form className="fixed top-[25%] bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 z-40">
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="userId">
                                     User ID
@@ -117,9 +117,9 @@ export default function UserSection({setUserId}:{setUserId:any})
                         </form>
                     </div>
                     :
-                    <div className="w-1/2 ml-[37%] max-w-xs">
+                    <div className="w-1/2 ml-[37%] max-w-xs overflow-y-auto">
                         <div onClick={()=>setShowModal(false)} className="bg-[#d7d7d7c0] w-full h-full fixed top-0 left-0 z-20"></div>
-                        <form onSubmit={handleUserSubmit} className="fixed bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 z-40">
+                        <form onSubmit={handleUserSubmit} className="fixed top-[25%] bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 z-40">
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
                                     Username
@@ -130,7 +130,7 @@ export default function UserSection({setUserId}:{setUserId:any})
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="gender">
                                     Gender
                                 </label>
-                                <select className="bg-white text-black" name="gender" id="">
+                                <select className="bg-white text-black text-sm" name="gender" id="">
                                     <option value="F">Female</option>
                                     <option value="M">Male</option>
                                 </select>
@@ -139,7 +139,7 @@ export default function UserSection({setUserId}:{setUserId:any})
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="age">
                                     Age
                                 </label>
-                                <select className="bg-white text-black" name="age" id="">
+                                <select className="bg-white text-black text-sm" name="age" id="">
                                     <option value="1">Under 18</option>
                                     <option value="18">18-24</option>
                                     <option value="25">25-34</option>
@@ -153,7 +153,7 @@ export default function UserSection({setUserId}:{setUserId:any})
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="ocupation">
                                     Ocupation
                                 </label>
-                                <select name="occupation" id="occupation" className="bg-white text-black">
+                                <select name="occupation" id="occupation" className="bg-white text-black text-sm">
                                     <option value="0">Other or not specified</option>
                                     <option value="1">Academic/Educator</option>
                                     <option value="2">Artist</option>
@@ -181,7 +181,7 @@ export default function UserSection({setUserId}:{setUserId:any})
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="zip_code">
                                     ZIP Code
                                 </label>
-                                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="zip_code" type="text" name="zip_code"/>
+                                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="zip_code" type="number" name="zip_code"/>
                             </div>
                             <div className="flex items-center justify-between">
                                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
